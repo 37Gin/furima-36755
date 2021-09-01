@@ -18,16 +18,17 @@ has_many :logs
 
 ## items テーブル
 
-| Column        | Type        | Options                         |
-| ------------- | ----------- | ------------------------------- |
-| title         | string      | null: false                     |
-| explanation   | text        | null: false                     |
-| category      | string      | null: false                     |
-| state         | string      | null: false                     |
-| delivery_fee  | string      | null: false                     |
-| region        | string      | null: false                     |
-| shipping_date | string      | null: false                     |
-| user          | references  | null: false, foreign_key: true  |
+| Column           | Type        | Options                         |
+| ---------------- | ----------- | ------------------------------- |
+| title            | string      | null: false                     |
+| explanation      | text        | null: false                     |
+| category         | string      | null: false                     |
+| state_id         | integer     | null: false                     |
+| delivery_fee_id  | integer     | null: false                     |
+| region_id        | integer     | null: false                     |
+| shipping_date_id | integer     | null: false                     |
+| price            | integer     | null: false                     |
+| user             | references  | null: false, foreign_key: true  |
 
 ### Association
 
@@ -51,12 +52,12 @@ has_one :order
 
 | Column               | Type       | Options                         |
 | -------------------- | ---------- | ------------------------------- |
-| postcode             | integer    | null: false                     |
-| prefecture           | string     | null: false                     |
+| postcode             | string     | null: false                     |
+| region_id            | integer    | null: false                     |
 | city                 | string     | null: false                     |
 | address              | string     | null: false                     |
 | building_name        | string     |                                 |
-| phone_number         | integer    | null: false                     |
+| phone_number         | string     | null: false                     |
 | log                  | references | null: false, foreign_key: true  |
 
 ### Association

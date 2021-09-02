@@ -3,7 +3,7 @@
 | Column              | Type    | Options                   |
 | ------------------- | ------- | ------------------------- |
 | nickname            | string  | null: false               |
-| mail                | string  | null: false, unique: true |
+| email               | string  | null: false, unique: true |
 | encrypted_password  | string  | null: false               |
 | first_name_kanji    | string  | null: false               |
 | last_name_kanji     | string  | null: false               |
@@ -22,7 +22,7 @@ has_many :logs
 | ---------------- | ----------- | ------------------------------- |
 | title            | string      | null: false                     |
 | explanation      | text        | null: false                     |
-| category         | string      | null: false                     |
+| category_id      | integer     | null: false                     |
 | state_id         | integer     | null: false                     |
 | delivery_fee_id  | integer     | null: false                     |
 | region_id        | integer     | null: false                     |

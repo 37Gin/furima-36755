@@ -11,14 +11,14 @@ class Item < ApplicationRecord
   
   validates :title,            presence: true
   validates :explanation,      presence: true
-  validates :category_id,      presence: true, numericality: { other_than: 1 }
-  validates :state_id,         presence: true, numericality: { other_than: 1 }
-  validates :delivery_fee_id,  presence: true, numericality: { other_than: 1 }
-  validates :region_id,        presence: true, numericality: { other_than: 1 }
-  validates :shipping_date_id, presence: true, numericality: { other_than: 1 }
+  validates :category_id,      presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :state_id,         presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :delivery_fee_id,  presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :region_id,        presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :shipping_date_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :price,
     presence: true,
-    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 },
-    format: { with: /\A[0-9]+\z/ }
+    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" },
+    format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters" }
 
 end

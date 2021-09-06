@@ -6,7 +6,6 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品出品機能' do
-    binding.pry
     context '新規登録できる場合' do
       it 'image, title, explanation, category_id, state_id, delivery_fee_id, region_id, shipping_date_id, priceが存在すれば登録できる' do
         expect(@item).to be_valid
@@ -86,17 +85,17 @@ RSpec.describe Item, type: :model do
       it 'priceは300未満では登録できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'priceは9999999未満では登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'priceは半角数字でしか登録できない' do
         @item.price = 'thousand'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters')
       end
     end
   end

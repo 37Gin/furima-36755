@@ -9,8 +9,7 @@ class LogOrder
     validates :region_id
     validates :city
     validates :address
-    validates :phone_number, format: { with: /\A\d{3}[-]?\d{4}\z/ }
-    validates :log_id
+    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
   end
 
   def save

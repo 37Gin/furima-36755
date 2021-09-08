@@ -5,11 +5,11 @@ class LogOrder
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postcode, format: { with: \A\d{3}[-]\d{4}\z }
+    validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :region_id
     validates :city
     validates :address
-    validates :phone_number, format: { with: \A\d{3}[-]?\d{4}\z }
+    validates :phone_number, format: { with: /\A\d{3}[-]?\d{4}\z/ }
     validates :log_id
   end
 

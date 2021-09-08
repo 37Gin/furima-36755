@@ -1,6 +1,6 @@
 class LogOrder
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postcode, :region_id, :city, :address, :building_name, :phone_number, :log_id
+  attr_accessor :user_id, :item_id, :postcode, :region_id, :city, :address, :building_name, :phone_number, :log_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class LogOrder
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
+    validates :token
   end
 
   def save

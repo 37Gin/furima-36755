@@ -8,6 +8,7 @@ class LogsController < ApplicationController
   def create
     @log_order = LogOrder.new(log_params)
     if @log_order.valid?
+      pay_item
       @log_order.save
       redirect_to root_path
     else
@@ -20,10 +21,19 @@ class LogsController < ApplicationController
   def log_params
     params.require(:log_order)
     .permit(:postcode, :region_id, :city, :address, :building_name, :phone_number)
-    .merge(user_id: current_user.id, item_id: params.require(:item_id))
+    .merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: log_params[:token],
+      currency: 'jpy'
+    )
   end
 end

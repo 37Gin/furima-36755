@@ -1,5 +1,8 @@
 class LogsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_index
   before_action :set_item, only: [:index, :create]
+  before_action :check_stock
 
   def index
     @log_order = LogOrder.new
@@ -35,5 +38,15 @@ class LogsController < ApplicationController
       card: log_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def check_stock
+    set_item
+    redirect_to root_path if @item.log.present?
+  end
+
+  def move_to_index
+    set_item
+    redirect_to root_path if current_user.id == @item.user_id
   end
 end

@@ -34,6 +34,11 @@ RSpec.describe LogOrder, type: :model do
       @log_order.valid?
       expect(@log_order.errors.full_messages).to include('Postcode input correctly')
     end
+    it "postcodeの'-'がないと登録できない" do
+      @log_order.postcode = '1234567'
+      @log_order.valid?
+      expect(@log_order.errors.full_messages).to include('Postcode input correctly')
+    end
     it 'region_idが空では登録できない' do
       @log_order.region_id = ''
       @log_order.valid?
@@ -60,12 +65,12 @@ RSpec.describe LogOrder, type: :model do
       expect(@log_order.errors.full_messages).to include("Phone number can't be blank")
     end
     it 'phone_numberが9文字以下では登録できない' do
-      @log_order.phone_number = 123456789
+      @log_order.phone_number = '123456789'
       @log_order.valid?
       expect(@log_order.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
     end
     it 'phone_numberが12文字以上では登録できない' do
-      @log_order.phone_number = 123456789012
+      @log_order.phone_number = '123456789012'
       @log_order.valid?
       expect(@log_order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
     end
@@ -88,6 +93,11 @@ RSpec.describe LogOrder, type: :model do
       @log_order.item_id = nil
       @log_order.valid?
       expect(@log_order.errors.full_messages).to include("Item can't be blank")
+    end
+    it 'tokenが空では登録できない' do
+      @log_order.token = ''
+      @log_order.valid?
+      expect(@log_order.errors.full_messages).to include("Token can't be blank")
     end
   end
 end

@@ -58,7 +58,6 @@ class ItemsController < ApplicationController
   end
 
   def check_stock
-    set_item
     redirect_to root_path if @item.log.present?
   end
 end

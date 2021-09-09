@@ -9,7 +9,7 @@ class LogOrder
     validates :region_id, numericality: { other_than: 1, message: "Select" }
     validates :city
     validates :address
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "input only number" }
+    validates :phone_number, format: { with: /\A[0-9]+\z/, message: "input only number" }, length: { in: 10..11 }
     validates :token
   end
 

@@ -15,6 +15,7 @@
 
 has_many :items
 has_many :logs
+has_many :messages
 
 ## items テーブル
 
@@ -34,6 +35,7 @@ has_many :logs
 
 belongs_to :user
 has_one :log
+has_many :messages
 
 ## logs テーブル
 
@@ -64,3 +66,15 @@ has_one :order
 
 belongs_to :log
 
+## messages テーブル
+
+| Column | Type       | Options                         |
+| ------ | ---------- | ------------------------------- |
+| text   | text       | null: false                     |
+| user   | references | null: false, foreign_key: true  |
+| item   | references | null: false, foreign_key: true  |
+
+### Association
+
+belongs_to :user
+belongs_to :item

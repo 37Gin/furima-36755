@@ -146,6 +146,8 @@
   background-color: #fff;
   margin: 5vh 0;
   text-align: center;
+  max-height: 600px;
+  overflow: scroll;
 }
 
 .comment-text {
@@ -204,4 +206,26 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 23px;
+}
+
+.message-title {
+  font-size: 24px;
+  color: #3CCACE;
+  margin-bottom: 15px;
+}
+
+.message-content {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.message-user-nickname {
+  color: #3CCACE;
+}
+
+.message-text {
+  color: black;
+  margin-left: 20px;
+  margin-bottom: 15px;
 }

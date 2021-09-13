@@ -23,4 +23,5 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :logs
+  has_many :messages
 end

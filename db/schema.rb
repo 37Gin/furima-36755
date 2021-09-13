@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_014639) do
+ActiveRecord::Schema.define(version: 2021_09_13_015559) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 2021_09_08_014639) do
     t.index ["user_id"], name: "index_logs_on_user_id"
   end
 
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_messages_on_item_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
     t.integer "region_id", null: false
@@ -92,5 +102,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_014639) do
   add_foreign_key "items", "users"
   add_foreign_key "logs", "items"
   add_foreign_key "logs", "users"
+  add_foreign_key "messages", "items"
+  add_foreign_key "messages", "users"
   add_foreign_key "orders", "logs"
 end

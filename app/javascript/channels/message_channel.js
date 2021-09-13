@@ -24,5 +24,7 @@ consumer.subscriptions.create("MessageChannel", {
     messageContent.appendChild(messageNickname);
     messageContent.appendChild(messageText);
 
+    const messageForm = document.getElementById('message-form');
+    messageForm.reset();
   }
 });

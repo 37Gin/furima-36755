@@ -76,7 +76,7 @@
   </div>
 
   <div class="comment-box">
-    <%= form_with model: [@item, @message], local: true do |f| %>
+    <%= form_with model: [@item, @message], local: true, id: 'message-form' do |f| %>
       <%= f.text_area :text, class: "comment-text" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。

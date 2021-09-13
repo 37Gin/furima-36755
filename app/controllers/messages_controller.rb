@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   def create
-    binding.pry
     message = Message.create(message_params)
     redirect_to "/items/#{message.item.id}"
   end

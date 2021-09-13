@@ -88,6 +88,13 @@
         <span>コメントする<span>
       </button>
     <% end %>
+    <%= "コメント一覧" %>
+    <% @messages.each do |t| %>
+      <div>
+        <%= t.user.nickname %>
+        <%= t.text %>
+      </div>
+    <% end %>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">
